@@ -51,6 +51,7 @@ public class IngresoLibroViewController {
 		mapMeses.put("Octubre", 10);
 		mapMeses.put("Noviembre", 11);
 		mapMeses.put("Diciembre", 12);
+		
 		cargarMeses();
 		//arrMeses =  new ArrayList<String>(Arrays.asList(mapMeses.keySet().toArray()));
 		//List<String> aa = Arrays.asList(mapMeses.keySet().toArray());
