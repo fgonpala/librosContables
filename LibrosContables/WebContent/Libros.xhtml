@@ -35,8 +35,7 @@
 		        		<h:panelGroup>
 		        			<p:panel header="Seleccione Archivo :">
 				    			<p:growl id="messages" showDetail="true" />
-    							<p:fileUpload value="#{fileUploadView.file}" mode="simple" skinSimple="true"/>
-   								<p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadView.upload}" />
+    							<p:fileUpload  fileUploadListener="#{fileUploadView.upload}" label="Archivo Libro"  update="messages"/>
 				 			</p:panel>
 		 				</h:panelGroup>
 		 				<p:commandButton value="Procesar"></p:commandButton>
