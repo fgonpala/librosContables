@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c_rt="http://java.sun.com/jstl/core_rt"
+	xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+	<body bgcolor="#A9E2F3"> 
+	    <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+    	<h:form enctype="multipart/form-data">
+			<p:panel header="INGRESOS DE LIBROS DE COMPRA Y VENTA">
+			   <p:growl id="msg" />
+			   <h:panelGrid columns="1" style="margin-bottom:10px" cellpadding="5">
+			   			<h:panelGroup>
+							<h:outputLabel value="[#{sessionData.empresaSeleccionada.rut}]"/> 
+							<h:outputLabel value="#{sessionData.empresaSeleccionada.nombre}" />
+						</h:panelGroup>
+						<h:panelGroup style="margin-bottom:50px">
+	        				<p:outputLabel for="year" value="Año" />
+        						<p:selectOneMenu id="year" value="#{ingresoLibroViewController.periodo.year}" style="width:125px">
+            						<f:selectItems value="#{ingresoLibroViewController.arrYears}"></f:selectItems>
+            					</p:selectOneMenu>
+		        		</h:panelGroup>
+		        		<h:panelGroup>
+		        		<p:outputLabel for="mes" value="Mes" />
+        						<p:selectOneMenu id="mes" value="#{ingresoLibroViewController.periodo.mes}" style="width:125px">
+            						<f:selectItems value="#{ingresoLibroViewController.arrMeses}"></f:selectItems>
+            					</p:selectOneMenu>
+		        		</h:panelGroup>
+						<h:panelGroup style="margin-bottom:50px">
+	        				<h:outputText value="Tipo de Libro :" />
+	        				<p:inputSwitch onLabel="Compra" offLabel="Venta" />
+		        		</h:panelGroup>
+		        		<h:panelGroup>
+		        			<p:panel header="Seleccione Archivo :">
+				    			<p:growl id="messages" showDetail="true" />
+    							<p:fileUpload value="#{fileUploadView.file}" mode="simple" skinSimple="true"/>
+   								<p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadView.upload}" />
+				 			</p:panel>
+		 				</h:panelGroup>
+		 				<p:commandButton value="Procesar"></p:commandButton>
+				</h:panelGrid>
+			</p:panel>
+		</h:form>
+	</body> 
+</html>

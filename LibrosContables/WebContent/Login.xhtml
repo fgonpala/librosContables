@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c_rt="http://java.sun.com/jstl/core_rt"
+      xmlns:p="http://primefaces.org/ui">
+      
+<script>
+function limpia(elemento)
+{
+elemento.value = "";
+}
+
+function verifica(elemento)
+{
+if(elemento.value == "")
+elemento.value = "Default Value";
+}
+</script>
+<h:head></h:head> 
+
+<body bgcolor="#A9E2F3"> 
+<h:form>            
+
+    <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+		<p:panel id="horizontal" header="LOGIN" style="width:500px" >
+		<h:panelGrid columns="2" cellpadding="10">
+				<h:panelGrid>
+					<h:graphicImage url="/resource/Imagenes/LoginRed.jpg" width="200"/>
+				</h:panelGrid>
+					<h:panelGrid>
+						<h:outputLabel for="username" value="Usuario" />
+				<p:inputText id="username" value="#{usuarioViewController.usuario}" required="true" requiredMessage="Ingrese Usuario"
+					label="username" onclick="javascript: limpia(this);" onBlur="javascript: verifica(this);" />
+				<h:outputLabel for="password" value="Password" />
+				<p:password id="password" value="#{usuarioViewController.clave}" required="true" requiredMessage="Ingrese Password"
+					label="password" onclick="javascript: limpia(this);" onBlur="javascript: verifica(this);"/>
+
+				<f:facet name="footer">
+					<p:commandButton value="Login" update="growl"
+						action="#{usuarioViewController.ChequearUsuarios}" ajax="false"/>
+				</f:facet>
+					</h:panelGrid>
+		</h:panelGrid>
+		</p:panel>
+	</h:form>
+</body> 
+		
+</html>
